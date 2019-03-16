@@ -1,18 +1,27 @@
 package idwall.desafio.string;
 
 /**
- * Created by Rodrigo Catão Araujo on 06/02/2018.
+ * Abstract class to define a formatter that break lines at line limit specified on limit property, and make text
+ * justified according to justify property.
  */
 public abstract class StringFormatter {
 
-    private Integer limit;
+    protected int limit;
+    protected boolean justify;
 
-    public StringFormatter() {
-        this.limit = 40;
+    /**
+     * Constructor defining line maximum length and if text must be justified.
+     *
+     * @param limit
+     * @param justify
+     */
+    public StringFormatter(int limit, boolean justify) {
+        this.limit = limit;
+        this.justify = justify;
     }
 
     /**
-     * It receives a text and should return it formatted
+     * It receives a text and returns it formatted
      *
      * @param text
      * @return
