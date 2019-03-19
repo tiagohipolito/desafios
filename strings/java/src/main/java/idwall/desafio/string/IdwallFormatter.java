@@ -59,7 +59,7 @@ public class IdwallFormatter extends StringFormatter {
      * @param justify
      * @return
      */
-    private String formatLine(StringBuilder lineBuilder, boolean justify) {
+    protected String formatLine(StringBuilder lineBuilder, boolean justify) {
         StringBuilder justifiedLineBuilder = new StringBuilder(lineBuilder.toString().trim());
         if (justify && !justifiedLineBuilder.toString().isEmpty()) {
             int lastSpaceCharIndex = 0;
