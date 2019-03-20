@@ -16,7 +16,7 @@ class CrawlerApplication : CommandLineRunner {
         val subreddits = "askreddit;worldnews;cats"
 
         redditCrawlerService.retrieveInfo(subreddits).sortedByDescending { it.upvotes }.forEach {
-            println("${it.subreddit} / ${it.title}")
+            println("(${it.subreddit}) ${it.title}")
             println("upvotes: ${it.upvotes}")
             println("link: ${it.link}")
             println("comments: ${it.commentsUrl}")

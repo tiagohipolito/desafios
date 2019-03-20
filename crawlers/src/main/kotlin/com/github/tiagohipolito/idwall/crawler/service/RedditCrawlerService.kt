@@ -14,11 +14,11 @@ class RedditCrawlerService {
     fun retrieveInfo(subreddits: String) = subreddits.split(";").flatMap { retrieveSubredditInfo(it) }
 
     private fun retrieveSubredditInfo(subredditName: String): List<SubredditThread> {
-        val doc = Jsoup.connect("$redditUrl$subredditName/").ignoreHttpErrors(true).get()
+        val doc = Jsoup.connect("${redditUrl}/r/$subredditName/").ignoreHttpErrors(true).get()
         return doc.getElementsByClass("thing").filter {
             it.getElementsByClass("score unvoted").attr("title") != "" && it.getElementsByClass("score unvoted").attr("title").toInt() >= 5000
         }.map {
-            var link = it.getElementsByClass("title").attr("href")
+            var link = it.select("p.title a.title").attr("href")
             if (link.isNotBlank() && !link.contains("http")) {
                 link = redditUrl + link
             }
